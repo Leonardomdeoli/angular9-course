@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
-
 @Component({
   selector: 'app-product-crud',
   templateUrl: './product-crud.component.html',
@@ -9,14 +8,12 @@ import { Router } from "@angular/router";
 })
 export class ProductCrudComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
-
   }
 
   navigateProductCreate(): void {
-   this.router.navigate(['/products/create']);
+    this._router.navigate(['/products/create']);
   }
-
 }

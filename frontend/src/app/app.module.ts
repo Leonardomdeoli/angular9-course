@@ -18,6 +18,20 @@ import { PaddingDirective } from './directives/padding.directive';
 import { ForDirective } from './directives/for.directive';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
 import { MatButtonModule } from "@angular/material/button";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from "@angular/common/http";
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
+import { FormsModule } from "@angular/forms";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { ProductReadComponent } from './components/product/product-read/product-read.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -30,7 +44,8 @@ import { MatButtonModule } from "@angular/material/button";
     ProductCrudComponent,
     PaddingDirective,
     ForDirective,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductReadComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +55,19 @@ import { MatButtonModule } from "@angular/material/button";
     MatSidenavModule,
     MatCardModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule,
+    HttpClientModule,
+    MatTableModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatIconModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

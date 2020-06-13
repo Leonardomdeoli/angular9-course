@@ -1,4 +1,8 @@
+import { Router } from '@angular/router';
+import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../product.model';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-create',
@@ -7,15 +11,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCreateComponent implements OnInit {
 
-  atributoLegal = "qualquer";
+  required = new FormControl('', [Validators.required, Validators.requiredTrue]);
 
-  constructor() { }
-
-  ngOnInit(): void {
-
+  product: Product = {
+    name: '',
+    price: null
   }
 
-  fazerAlgo(): void {
-    console.log('Fazendo algo');
+  constructor(
+    private _productService: ProductService,
+    private _router: Router
+  ) { }
+
+  ngOnInit(): void {
+  }
+
+  createProduct(): void {
+    this._productService.create(this.product).subscribe(() => {
+
+      this._productService.showMessage("Produto criado").subscribe(() => {
+        this._router.navigate(['/products']);
+      });
+    })
+  }
+
+  cancel(): void {
+    this._router.navigate(['/products']);
+  }
+
+  getErrorMessage() {
+    if (this.required.hasError('required')) {
+      return 'Você deve inserir um valor';
+    }
+    
+    return '';
   }
 }
