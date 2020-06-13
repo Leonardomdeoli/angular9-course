@@ -11,3 +11,7 @@
 .sidenav i {
     padding-right: 10px;
 }
+
+.container .content{
+    background-color: #fff;
+}
