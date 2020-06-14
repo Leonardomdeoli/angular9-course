@@ -1,49 +1,49 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from './../product.service';
+import { Product } from './../product.model';
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../product.model';
 import { FormControl, Validators } from '@angular/forms';
-import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 
 @Component({
-  selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  selector: 'app-product-update',
+  templateUrl: './product-update.component.html',
+  styleUrls: ['./product-update.component.css']
 })
-export class ProductCreateComponent implements OnInit {
+export class ProductUpdateComponent implements OnInit {
 
   required = new FormControl('', [Validators.required, Validators.requiredTrue]);
 
-  product: Product = {
-    name: '',
-    price: null
-  }
+  product: Product;
 
   constructor(
     private _productService: ProductService,
-    private _router: Router
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    const id = +this._activatedRoute.snapshot.paramMap.get('id');
+    this._productService.readById(id).subscribe(product => this.product = product)
   }
 
-  createProduct(): void {
-    if( this.product.name == null || this.product.name == ''){
+
+  updateProduct(): void {
+    if (this.product.name == null || this.product.name == '') {
       this._productService.showMessage("O nome do produto deve ser informado.", true);
       return;
     }
 
-    if(this.product.price == null || this.product.price < 1){
+    if (this.product.price == null || this.product.price < 1) {
       this._productService.showMessage("O preço do produto deve ser informado.", true);
       return;
     }
 
-    this._productService.create(this.product).subscribe(() => {
+    this._productService.upate(this.product).subscribe(() => {
 
-      this._productService.showMessage("Produto criado");
+      this._productService.showMessage("Produto atualizado com sucesso.");
 
       this._router.navigate(['/products']);
-    })
+    });
   }
 
   cancel(): void {

@@ -1,5 +1,5 @@
 export interface Product {
     id?: number //Atributo opcional
-    name: String
+    name: string
     price: number
 }
