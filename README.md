@@ -10,22 +10,22 @@ https://www.cod3r.com.br/
 
 [Angular Generate](https://angular.io/cli/generate)
 
-##### Comandos
+## Comandos utilizados no projeto
 
-> Gera e / ou modifica arquivos com base em um esquema.
+##### Gera e / ou modifica arquivos com base em um esquema.
 `ng generate <esquema>`
 
-> Comando resumido
+##### Comando resumido
 `ng g <esquema>`
 
-> Criando **service**
+##### Criando **service**
 `ng g s <nome>`
 
->Criando **interface**
+##### Criando **interface**
 `ng g interface <nome>`
 
->Criando **componentes**
+##### Criando **componentes**
 `ng g c <nome> `
 
->Criando **diretivas**
+##### Criando **diretivas**
 `ng g directive <nome>`
